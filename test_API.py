@@ -12,9 +12,11 @@ response = requests.post(url, data=payload)
 
 @allure.tag('Registration')
 def test_status_code_post():
-    response = requests.post(url, data=payload)
+    with allure.step("Открываем страницу регистрации"):
 
-    assert response.status_code == 201, f"Unexpected status code {response.status_code}"
+        response = requests.post(url, data=payload)
+
+        assert response.status_code == 201, f"Unexpected status code {response.status_code}"
 
 @allure.tag('Registration')
 def test_schema_validate():
